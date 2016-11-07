@@ -31,8 +31,8 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
     public void onBefore(BaseRequest request) {
         super.onBefore(request);
         //主要用于在所有请求之前添加公共的请求头或请求参数，例如登录授权的 token,使用的设备信息等,可以随意添加,也可以什么都不传
-        request.headers("header1", "HeaderValue1")//
-                .params("params1", "ParamsValue1")//
+        request.headers("header_qian", "HeaderValue_qian")//
+                .params("params_qian", "ParamsValue_qian")//
                 .params("token", "3215sdf13ad1f65asd4f3ads1f");
     }
 
@@ -55,3 +55,15 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         return t;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

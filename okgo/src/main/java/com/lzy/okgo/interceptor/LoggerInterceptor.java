@@ -79,7 +79,7 @@ public class LoggerInterceptor implements Interceptor {
             Response.Builder builder = response.newBuilder();
             Response clone = builder.build();
             Log.e(tag, "url : " + clone.request().url());
-            Log.e(tag, "code : " + clone.code());
+            Log.e(tag, "stateCode : " + clone.code());
             Log.e(tag, "protocol : " + clone.protocol());
             if (!TextUtils.isEmpty(clone.message())) Log.e(tag, "message : " + clone.message());
 

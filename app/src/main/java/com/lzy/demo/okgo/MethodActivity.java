@@ -57,8 +57,8 @@ public class MethodActivity extends BaseDetailActivity implements AdapterView.On
             case 0:
                 OkGo.get(Urls.URL_METHOD)//
                         .tag(this)//
-                        .headers("header1", "headerValue1")//
-                        .params("param1", "paramValue1")//
+                        .headers("header_zhihou", "headerValue_zhihou")//
+                        .params("param_zhihou", "paramValue_zhihou")//
                         .execute(new DialogCallback<LzyResponse<ServerModel>>(this) {
                             @Override
                             public void onSuccess(LzyResponse<ServerModel> responseData, Call call, Response response) {
