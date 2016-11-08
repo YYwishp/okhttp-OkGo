@@ -99,6 +99,7 @@ public class FormUploadActivity extends BaseDetailActivity {
                 files.add(new File(imageItems.get(i).path));
             }
         }
+        // TODO: 2016/11/7 post上传文件
         //拼接参数
         OkGo.post(Urls.URL_FORM_UPLOAD)//
                 .tag(this)//
