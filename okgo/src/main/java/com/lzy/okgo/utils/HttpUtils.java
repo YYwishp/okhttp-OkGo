@@ -20,7 +20,7 @@ import okhttp3.Response;
 
 /**
  * ================================================
- * 作    者：jeasonlzy（廖子尧）Github地址：https://github.com/jeasonlzy0216
+ * 作    者：jeasonlzy（廖子尧）Github地址：https://github.com/jeasonlzy
  * 版    本：1.0
  * 创建日期：16/8/9
  * 描    述：
@@ -70,8 +70,8 @@ public class HttpUtils {
     }
 
     /** 生成类似表单的请求体 */
-    public static RequestBody generateMultipartRequestBody(HttpParams params) {
-        if (params.fileParamsMap.isEmpty()) {
+    public static RequestBody generateMultipartRequestBody(HttpParams params, boolean isMultipart) {
+        if (params.fileParamsMap.isEmpty() && !isMultipart) {
             //表单提交，没有文件
             FormBody.Builder bodyBuilder = new FormBody.Builder();
             for (String key : params.urlParamsMap.keySet()) {

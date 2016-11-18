@@ -9,12 +9,9 @@ import android.widget.ImageView;
 import com.lzy.demo.R;
 import com.lzy.demo.base.BaseActivity;
 import com.lzy.demo.callback.JsonConvert;
-import com.lzy.demo.model.LzyResponse;
 import com.lzy.demo.model.ServerModel;
-import com.lzy.demo.utils.Urls;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.adapter.Call;
-import com.lzy.okgo.callback.BitmapCallback;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.convert.BitmapConvert;
 import com.lzy.okgo.convert.FileConvert;
@@ -22,6 +19,7 @@ import com.lzy.okgo.convert.StringConvert;
 import com.lzy.okrx.RxAdapter;
 
 import java.io.File;
+import java.util.HashSet;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -54,21 +52,42 @@ public class TestActivity extends BaseActivity {
 
     @OnClick(R.id.btn2)
     public void btn2(View view) {
-        OkGo.post(Urls.URL_IMAGE)//
-                .connTimeOut(2000)//
-                .readTimeOut(2000)//
-                .writeTimeOut(2000)//
-                .headers("aaa", "111")//
-                .params("bbb", "222")//
-                .execute(new BitmapCallback() {
+        OkGo.get("https://github.com/")//
+                .tag(this)//
+                .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(Bitmap bitmap, okhttp3.Call call, Response response) {
-                        System.out.println("onSuccess");
+                    public void onSuccess(String s, okhttp3.Call call, Response response) {
+                        System.out.println("---onSuccess--");
+                    }
+
+                    @Override
+                    public void onError(okhttp3.Call call, Response response, Exception e) {
+                        e.printStackTrace();
+                        System.out.println("--onError---");
                     }
                 });
     }
 
     @OnClick(R.id.btn3)
     public void btn3(View view) {
+
+        HashSet<String> set = new HashSet<>();
+        set.add("111");
+        set.add("222");
+        set.add("111");
+
+        OkGo.getInstance().cancelTag(this);
+    }
+
+    public class LzyResponse<T> {
+        public int code;
+        public String msg;
+        public T data;
+    }
+
+    public class People {
+        public long id;
+        public String name;
+        public int age;
     }
 }
